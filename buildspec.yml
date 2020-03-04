@@ -9,10 +9,10 @@ phases:
       - pip install -r requirements.txt -t .
   build:
     commands:
-      - aws cloudformation package --s3-bucket $LAMBDA_ARTIFACT_STORE_BUCKET --template-file template.yml --output-template-file output-template.yaml
+      - aws cloudformation package --s3-bucket $LAMBDA_ARTIFACT_STORE_BUCKET --template-file template.yaml --output-template-file output-template.yaml
       
 artifacts:
   type: zip
   files:
+    - template.yaml 
     - output-template.yaml
-    - '**/*'
