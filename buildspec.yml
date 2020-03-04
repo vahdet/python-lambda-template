@@ -9,6 +9,7 @@ phases:
       - pip install -r requirements.txt -t .
   build:
     commands:
+      # LAMBDA_ARTIFACT_STORE_BUCKET should be an environment variable in AWS::CodeBuild::Project
       - aws cloudformation package --s3-bucket $LAMBDA_ARTIFACT_STORE_BUCKET --template-file template.yaml --output-template-file output-template.yaml
       
 artifacts:
