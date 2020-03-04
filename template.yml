@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion : '2010-09-09'
+AWSTemplateFormatVersion : 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 Description: A sample SAM template for deploying Lambda functions.
 Parameters:
@@ -18,11 +18,15 @@ Resources:
       CodeUri: ./
       Runtime: python3.8
       Handler: lambda_function.lambda_handler
-      Timeout: 3
       Environment:
         Variables:
           BACKEND_SERVICE_BASE_URL: !Ref BackendServiceBaseURL
-      
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - "logs:*"
       Tags:
         Environment: !Ref Environment
         Application: !Ref Application
