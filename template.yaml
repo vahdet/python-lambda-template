@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion : 2010-09-09
+AWSTemplateFormatVersion : "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: A sample SAM template for deploying Lambda functions.
 Parameters:
@@ -27,6 +27,7 @@ Resources:
             - Effect: Allow
               Action:
                 - "logs:*"
+              Resource: "*" 
       Tags:
         Environment: !Ref Environment
         Application: !Ref Application
